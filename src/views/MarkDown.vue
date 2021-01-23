@@ -3,7 +3,11 @@
     <h1 class="text-center pt-3 text-3xl">MarkDown App</h1>
     <section class="flex h-80 m-10 text-center">
       <article class="border w-4/6 bg-gray-100 m-3">
-        <textarea class="w-full h-full" @input="update"></textarea>
+        <textarea
+          ref="markDownRef"
+          class="w-full h-full"
+          @input="update"
+        ></textarea>
       </article>
       <article
         class="border w-4/6 bg-gray-700 m-3 text-white"
@@ -36,6 +40,9 @@ export default {
       this.debounce(task, 500);
       //   console.log(debounce);
     },
+  },
+  mounted() {
+    this.$refs.markDownRef.focus();
   },
 };
 </script>

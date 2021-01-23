@@ -21,7 +21,8 @@
       </ul>
       <form @click.prevent="addHero" class="flex justify-between m-2">
         <input
-          class="border-none p-2 ml-3"
+          ref="heroRef"
+          class="border-none p-2 ml-3 outline-none"
           type="text"
           v-model="dcHero"
           placeholder="Enter your favourite Hero"
@@ -44,6 +45,9 @@ export default {
         { name: "Batman" },
       ],
     };
+  },
+  mounted() {
+    this.$refs.heroRef.focus();
   },
   methods: {
     addHero() {

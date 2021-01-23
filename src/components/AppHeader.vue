@@ -17,16 +17,23 @@
     <router-link :to="{ name: 'Slider' }" class="text-2xl text-white pr-3">
       Slider</router-link
     >
-    <button class="text-2xl text-white pr-3" @click="$emit('open-login-modal')">
+    <button v-if="isloggedIn" class="text-2xl text-white pr-3" @click="logout">
+      LogOut
+    </button>
+    <button
+      v-else
+      class="text-2xl text-white pr-3"
+      @click="$emit('open-login-modal')"
+    >
       Login
     </button>
-    <button class="text-2xl text-white pr-3" @click="logout">LogOut</button>
   </nav>
 </template>
 
 <script>
 import firebase from "../utilitis/firebase";
 export default {
+  props: { isloggedIn: Boolean },
   methods: {
     logout() {
       firebase
