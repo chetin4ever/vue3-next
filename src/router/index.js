@@ -4,6 +4,8 @@ import DcHeros from "@/views/DcHeros.vue"
 import Calender from "@/views/Calender.vue"
 import MarkDown from "@/views/MarkDown.vue"
 import Slider from "@/views/Slider.vue"
+import Calculator from "@/views/Calculator.vue"
+import ReusableModal from "@/views/ReusableModal.vue"
 
 const routes = [
   {
@@ -30,6 +32,16 @@ const routes = [
     path: "/Slider",
     name: "Slider",
     component: Slider,
+  },
+  {
+    path: "/Calculator",
+    name: "Calculator",
+    component: Calculator,
+  },
+  {
+    path: "/ReusableModal",
+    name: "ReusableModal",
+    component: ReusableModal,
   },
 ]
 

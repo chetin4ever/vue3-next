@@ -17,6 +17,15 @@
     <router-link :to="{ name: 'Slider' }" class="text-2xl text-white pr-3">
       Slider</router-link
     >
+    <router-link :to="{ name: 'Calculator' }" class="text-2xl text-white pr-3">
+      Calculator</router-link
+    >
+    <router-link
+      :to="{ name: 'ReusableModal' }"
+      class="text-2xl text-white pr-3"
+    >
+      Modal</router-link
+    >
     <button v-if="isloggedIn" class="text-2xl text-white pr-3" @click="logout">
       LogOut
     </button>

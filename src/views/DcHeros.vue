@@ -19,7 +19,7 @@
           </button>
         </li>
       </ul>
-      <form @click.prevent="addHero" class="flex justify-between m-2">
+      <form @submit.prevent="addHero" class="flex justify-between m-2">
         <input
           ref="heroRef"
           class="border-none p-2 ml-3 outline-none"
@@ -27,45 +27,44 @@
           v-model="dcHero"
           placeholder="Enter your favourite Hero"
         />
-        <button class="border-none p-2 bg-indigo-400 mx-2">Add hero</button>
+        <button class="border-none p-2 bg-indigo-400 mx-2" type="submit">
+          Add hero
+        </button>
       </form>
     </div>
   </div>
 </template>
 
 <script>
+import { computed, onMounted, ref } from "vue";
 export default {
-  data() {
-    return {
-      dcHero: "",
-      dcHeros: [
-        { name: "Super Man" },
-        { name: "Super Girl" },
-        { name: "Flash" },
-        { name: "Batman" },
-      ],
-    };
-  },
-  mounted() {
-    this.$refs.heroRef.focus();
-  },
-  methods: {
-    addHero() {
-      if (this.dcHero != "") {
-        return this.dcHeros.push({ name: this.dcHero });
-        this.dcHero = "";
+  setup() {
+    const dcHero = ref("");
+    const heroRef = ref("");
+    let dcHeros = ref([
+      { name: "Super Man" },
+      { name: "Super Girl" },
+      { name: "Flash" },
+      { name: "Batman" },
+    ]);
+    onMounted(() => {
+      heroRef.value.focus();
+    });
+    function addHero() {
+      if (dcHero.value != "") {
+        return dcHeros.value.push({ name: dcHero.value });
+        dcHero.value = "";
       }
-    },
-    remove(index) {
+    }
+    function remove(index) {
       this.dcHeros = this.dcHeros.filter((hero, i) => {
         return i != index;
       });
-    },
-  },
-  computed: {
-    herosCount() {
-      return this.dcHeros.length;
-    },
+    }
+    const herosCount = computed({
+      get: () => dcHeros.value.length,
+    });
+    return { dcHero, dcHeros, heroRef, addHero, remove, herosCount };
   },
 };
 </script>
