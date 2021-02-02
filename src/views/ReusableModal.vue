@@ -15,10 +15,29 @@
         >
       </r-modal>
       <r-modal v-if="isModal2Open" @close="isModal2Open = false">
-        <h1 class="text-2xl text-red-700">Modal 2</h1>
+        <template #title>
+          <h1 class="text-2xl text-red-700">Modal 2</h1>
+        </template>
+        <template #body
+          ><p class="text-2xl text-red-700">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum magnam
+            voluptatibus explicabo vitae, voluptatum ea recusandae error
+            provident, repu
+          </p></template
+        >
       </r-modal>
-      <button @click="isModal1Open = true">Modal 1</button>
-      <button @click="isModal2Open = true">Modal 2</button>
+      <button
+        class="border-solid border-2 border-blue-700 p-2 m-4 rounded"
+        @click="isModal1Open = true"
+      >
+        Modal 1
+      </button>
+      <button
+        class="border-solid border-2 border-blue-700 p-2 m-4 rounded"
+        @click="isModal2Open = true"
+      >
+        Modal 2
+      </button>
     </div>
   </div>
 </template>

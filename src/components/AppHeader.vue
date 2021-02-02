@@ -26,14 +26,14 @@
     >
       Modal</router-link
     >
+    <router-link :to="{ name: 'Chat' }" class="text-2xl text-white pr-3">
+      Chat</router-link
+    >
+
     <button v-if="isloggedIn" class="text-2xl text-white pr-3" @click="logout">
       LogOut
     </button>
-    <button
-      v-else
-      class="text-2xl text-white pr-3"
-      @click="$emit('open-login-modal')"
-    >
+    <button v-else class="text-2xl text-white pr-3" @click="openLogin">
       Login
     </button>
   </nav>
@@ -42,7 +42,8 @@
 <script>
 import firebase from "../utilitis/firebase";
 export default {
-  props: { isloggedIn: Boolean },
+  // props: { isloggedIn: Boolean },
+
   methods: {
     logout() {
       firebase
@@ -54,6 +55,14 @@ export default {
         .catch((error) => {
           console.log("An error happened.");
         });
+    },
+    openLogin() {
+      this.$store.commit("setLoginModal", true);
+    },
+  },
+  computed: {
+    isloggedIn() {
+      return this.$store.state.isloggedIn;
     },
   },
 };
